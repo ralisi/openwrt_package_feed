@@ -9,7 +9,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=olsrd
-PKG_VERSION:=0.5.6_cl_roam
+PKG_VERSION:=0.5.6_cr
 PKG_RELEASE:=2
 PKG_REV:=7cc7335b440255b88731e125ea4943677221e0e7
 
@@ -171,7 +171,7 @@ define Package/olsrd-mod-nameservice/install
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/lib/nameservice/olsrd_nameservice.so.* $(1)/usr/lib/
 endef
 
-define Package/olsrd-mod-nameservice/install
+define Package/olsrd-mod-cl_roam/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/lib/cl_roam/olsrd_cl_roam.so.* $(1)/usr/lib/
 endef
