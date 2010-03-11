@@ -91,13 +91,13 @@ endef
 
 define Package/olsrd-mod-txtinfo
   $(call Package/olsrd/template)
-  DEPENDS:=olsrd +wget
+  DEPENDS:=olsrd
   TITLE:=Small informative web server plugin
 endef
 
 define Package/olsrd-cl_roam
   $(call Package/olsrd/template)
-  DEPENDS:=olsrd
+  DEPENDS:=olsrd +wget
   TITLE:=Enables client-roaming
 endef
 
