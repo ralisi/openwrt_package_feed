@@ -174,6 +174,7 @@ endef
 define Package/olsrd-mod-cl_roam/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/lib/cl_roam/olsrd_cl_roam.so.* $(1)/usr/lib/
+	ln -sf /var/dhcp.leases $(1)/www/dhcp.leases
 endef
 
 define Package/olsrd-mod-secure/install
