@@ -95,7 +95,7 @@ define Package/olsrd-mod-txtinfo
   TITLE:=Small informative web server plugin
 endef
 
-define Package/olsrd-cl_roam
+define Package/olsrd-mod-cl_roam
   $(call Package/olsrd/template)
   DEPENDS:=olsrd +wget
   TITLE:=Enables client-roaming
