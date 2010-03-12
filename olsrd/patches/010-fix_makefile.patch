@@ -1,0 +1,10 @@
+--- ./Makefile.inc	2010-03-12 21:13:13.813537000 +0100
++++ ./Makefile.inc	2010-03-12 21:13:35.313537337 +0100
+@@ -197,6 +197,7 @@
+ # extra options from the outside
+ CPPFLAGS +=	$(EXTRA_CPPFLAGS)
+ LDFLAGS +=	$(EXTRA_LDFLAGS)
++LDFLAGS +=	-lpthread
+ 
+ # search sources and headers in current dir and in src/
+ SRCS +=		$(wildcard src/common/*.c src/*.c)

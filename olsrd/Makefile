@@ -115,7 +115,6 @@ define Build/Compile
 		$(TARGET_CONFIGURE_OPTS) \
 		NODEBUG=1 \
 		CFLAGS="$(TARGET_CFLAGS)" \
-		LDFLAGS="-lpthread" \
 		OS="linux" \
 		INSTALL_PREFIX="$(PKG_INSTALL_DIR)" \
 		LIBDIR="$(PKG_INSTALL_DIR)/usr/lib" \
