@@ -114,7 +114,7 @@ define Build/Compile
 	$(MAKE) -C "$(PKG_BUILD_DIR)" \
 		$(TARGET_CONFIGURE_OPTS) \
 		NODEBUG=1 \
-		CFLAGS="$(TARGET_CFLAGS)" \
+		CFLAGS="$(TARGET_CFLAGS) -lpthread" \
 		OS="linux" \
 		INSTALL_PREFIX="$(PKG_INSTALL_DIR)" \
 		LIBDIR="$(PKG_INSTALL_DIR)/usr/lib" \
@@ -174,6 +174,7 @@ endef
 define Package/olsrd-mod-cl_roam/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/lib/cl_roam/olsrd_cl_roam.so.* $(1)/usr/lib/
+	$(INSTALL_DIR) $(1)/usr/lib
 	ln -sf /var/dhcp.leases $(1)/www/dhcp.leases
 endef
 
