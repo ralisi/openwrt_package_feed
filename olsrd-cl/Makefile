@@ -68,31 +68,31 @@ endef
 
 define Package/olsrd-mod-dyn-gw-plain
   $(call Package/olsrd-cl/template)
-  DEPENDS:=olsrd
+  DEPENDS:=olsrd-cl
   TITLE:=Dynamic internet gateway plain plugin
 endef
 
 define Package/olsrd-mod-httpinfo
   $(call Package/olsrd-cl/template)
-  DEPENDS:=olsrd
+  DEPENDS:=olsrd-cl
   TITLE:=Small informative web server plugin
 endef
 
 define Package/olsrd-mod-nameservice
   $(call Package/olsrd-cl/template)
-  DEPENDS:=olsrd
+  DEPENDS:=olsrd-cl
   TITLE:=Lightweight hostname resolver plugin
 endef
 
 define Package/olsrd-mod-secure
   $(call Package/olsrd-cl/template)
-  DEPENDS:=olsrd
+  DEPENDS:=olsrd-cl
   TITLE:=Message signing plugin to secure routing domain
 endef
 
 define Package/olsrd-mod-txtinfo
   $(call Package/olsrd-cl/template)
-  DEPENDS:=olsrd
+  DEPENDS:=olsrd-cl
   TITLE:=Small informative web server plugin
 endef
 
