@@ -8,8 +8,7 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_BASENAME:=olsrd
-PKG_NAME:=$(PKG_BASENAME)-cl
+PKG_NAME:=olsrd-cl
 PKG_VERSION:=0.5.6_cr
 PKG_RELEASE:=2
 PKG_REV:=bdebcfe09159b7a75813debf2951dc4c87e1d967
@@ -66,43 +65,43 @@ define Package/olsrd-cl-mod-dyn-gw
   TITLE:=Dynamic internet gateway plugin
 endef
 
-define Package/olsrd-mod-dyn-gw-plain
+define Package/olsrd-cl-mod-dyn-gw-plain
   $(call Package/olsrd-cl/template)
   DEPENDS:=olsrd-cl
   TITLE:=Dynamic internet gateway plain plugin
 endef
 
-define Package/olsrd-mod-httpinfo
+define Package/olsrd-cl-mod-httpinfo
   $(call Package/olsrd-cl/template)
   DEPENDS:=olsrd-cl
   TITLE:=Small informative web server plugin
 endef
 
-define Package/olsrd-mod-nameservice
+define Package/olsrd-cl-mod-nameservice
   $(call Package/olsrd-cl/template)
   DEPENDS:=olsrd-cl
   TITLE:=Lightweight hostname resolver plugin
 endef
 
-define Package/olsrd-mod-secure
+define Package/olsrd-cl-mod-secure
   $(call Package/olsrd-cl/template)
   DEPENDS:=olsrd-cl
   TITLE:=Message signing plugin to secure routing domain
 endef
 
-define Package/olsrd-mod-txtinfo
+define Package/olsrd-cl-mod-txtinfo
   $(call Package/olsrd-cl/template)
   DEPENDS:=olsrd-cl
   TITLE:=Small informative web server plugin
 endef
 
-define Package/olsrd-mod-cl_roam
+define Package/olsrd-cl-mod-cl_roam
   $(call Package/olsrd-cl/template)
   DEPENDS:=olsrd-cl +wget
   TITLE:=Enables client-roaming
 endef
 
-define Package/olsrd-mod-secure/conffiles
+define Package/olsrd-cl-mod-secure/conffiles
 /etc/olsrd.d/olsrd_secure_key
 endef
 
