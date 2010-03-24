@@ -9,6 +9,7 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=olsrd
+PKG_NAME:=$(PKG_BASENAME)-cl
 PKG_VERSION:=0.5.6_cr
 PKG_RELEASE:=2
 PKG_REV:=bdebcfe09159b7a75813debf2951dc4c87e1d967
@@ -24,80 +25,80 @@ include $(INCLUDE_DIR)/package.mk
 
 TARGET_CFLAGS += $(FPIC)
 
-define Package/olsrd/template
+define Package/olsrd-cl/template
   SECTION:=net
   CATEGORY:=Network
   TITLE:=OLSRd with clientroaming
   URL:=http://www.olsr.org/
 endef
 
-define Package/olsrd
-  $(call Package/olsrd/template)
+define Package/olsrd-cl
+  $(call Package/olsrd-cl/template)
   MENU:=1
   DEPENDS:=+libpthread
 endef
 
-define Package/olsrd/conffiles
+define Package/olsrd-cl/conffiles
 /etc/config/olsrd
 endef
 
-define Package/olsrd-mod-arprefresh
-  $(call Package/olsrd/template)
-  DEPENDS:=olsrd
+define Package/olsrd-cl-mod-arprefresh
+  $(call Package/olsrd-cl/template)
+  DEPENDS:=olsrd-cl
   TITLE:=Kernel ARP cache refresh plugin
 endef
 
-define Package/olsrd-mod-dot-draw
-  $(call Package/olsrd/template)
-  DEPENDS:=olsrd
+define Package/olsrd-cl-mod-dot-draw
+  $(call Package/olsrd-cl/template)
+  DEPENDS:=olsrd-cl
   TITLE:=Dot topology information plugin
 endef
 
-define Package/olsrd-mod-bmf
-  $(call Package/olsrd/template)
-  DEPENDS:=olsrd +kmod-tun
+define Package/olsrd-cl-mod-bmf
+  $(call Package/olsrd-cl/template)
+  DEPENDS:=olsrd-cl +kmod-tun
   TITLE:=Basic multicast forwarding plugin
 endef
 
-define Package/olsrd-mod-dyn-gw
-  $(call Package/olsrd/template)
-  DEPENDS:=olsrd
+define Package/olsrd-cl-mod-dyn-gw
+  $(call Package/olsrd-cl/template)
+  DEPENDS:=olsrd-cl
   TITLE:=Dynamic internet gateway plugin
 endef
 
 define Package/olsrd-mod-dyn-gw-plain
-  $(call Package/olsrd/template)
+  $(call Package/olsrd-cl/template)
   DEPENDS:=olsrd
   TITLE:=Dynamic internet gateway plain plugin
 endef
 
 define Package/olsrd-mod-httpinfo
-  $(call Package/olsrd/template)
+  $(call Package/olsrd-cl/template)
   DEPENDS:=olsrd
   TITLE:=Small informative web server plugin
 endef
 
 define Package/olsrd-mod-nameservice
-  $(call Package/olsrd/template)
+  $(call Package/olsrd-cl/template)
   DEPENDS:=olsrd
   TITLE:=Lightweight hostname resolver plugin
 endef
 
 define Package/olsrd-mod-secure
-  $(call Package/olsrd/template)
+  $(call Package/olsrd-cl/template)
   DEPENDS:=olsrd
   TITLE:=Message signing plugin to secure routing domain
 endef
 
 define Package/olsrd-mod-txtinfo
-  $(call Package/olsrd/template)
+  $(call Package/olsrd-cl/template)
   DEPENDS:=olsrd
   TITLE:=Small informative web server plugin
 endef
 
 define Package/olsrd-mod-cl_roam
-  $(call Package/olsrd/template)
-  DEPENDS:=olsrd +wget
+  $(call Package/olsrd-cl/template)
+  DEPENDS:=olsrd-cl +wget
   TITLE:=Enables client-roaming
 endef
 
@@ -127,7 +128,7 @@ define Build/Compile
 		all libs install install_libs
 endef
 
-define Package/olsrd/install
+define Package/olsrd-cl/install
 	$(INSTALL_DIR) $(1)/etc/config
 	$(INSTALL_DATA) ./files/olsrd.config $(1)/etc/config/olsrd
 	$(INSTALL_DIR) $(1)/usr/sbin
@@ -136,68 +137,68 @@ define Package/olsrd/install
 	$(INSTALL_BIN) ./files/olsrd.init $(1)/etc/init.d/olsrd
 endef
 
-define Package/olsrd-mod-arprefresh/install
+define Package/olsrd-cl-mod-arprefresh/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/lib/arprefresh/olsrd_arprefresh.so.* $(1)/usr/lib/
 endef
 
-define Package/olsrd-mod-dot-draw/install
+define Package/olsrd-cl-mod-dot-draw/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/lib/dot_draw/olsrd_dot_draw.so.* $(1)/usr/lib/
 endef
 
-define Package/olsrd-mod-bmf/install
+define Package/olsrd-cl-mod-bmf/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/lib/bmf/olsrd_bmf.so.* $(1)/usr/lib/
 endef
 
-define Package/olsrd-mod-dyn-gw/install
+define Package/olsrd-cl-mod-dyn-gw/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/lib/dyn_gw/olsrd_dyn_gw.so.* $(1)/usr/lib/
 endef
 
-define Package/olsrd-mod-dyn-gw-plain/install
+define Package/olsrd-cl-mod-dyn-gw-plain/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/lib/dyn_gw_plain/olsrd_dyn_gw_plain.so.* $(1)/usr/lib/
 endef
 
-define Package/olsrd-mod-httpinfo/install
+define Package/olsrd-cl-mod-httpinfo/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/lib/httpinfo/olsrd_httpinfo.so.* $(1)/usr/lib/
 endef
 
-define Package/olsrd-mod-nameservice/install
+define Package/olsrd-cl-mod-nameservice/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/lib/nameservice/olsrd_nameservice.so.* $(1)/usr/lib/
 endef
 
-define Package/olsrd-mod-cl_roam/install
+define Package/olsrd-cl-mod-cl_roam/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/lib/cl_roam/olsrd_cl_roam.so.* $(1)/usr/lib/
 	$(INSTALL_DIR) $(1)/www
 	ln -sf /var/dhcp.leases $(1)/www/dhcp.leases
 endef
 
-define Package/olsrd-mod-secure/install
+define Package/olsrd-cl-mod-secure/install
 	$(INSTALL_DIR) $(1)/etc/olsrd.d
 	$(CP) ./files/olsrd_secure_key $(1)/etc/olsrd.d/
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/lib/secure/olsrd_secure.so.* $(1)/usr/lib/
 endef
 
-define Package/olsrd-mod-txtinfo/install
+define Package/olsrd-cl-mod-txtinfo/install
 	$(INSTALL_DIR) $(1)/usr/lib
 	$(INSTALL_BIN) $(PKG_BUILD_DIR)/lib/txtinfo/olsrd_txtinfo.so.* $(1)/usr/lib/
 endef
 
-$(eval $(call BuildPackage,olsrd))
-$(eval $(call BuildPackage,olsrd-mod-arprefresh))
-$(eval $(call BuildPackage,olsrd-mod-dot-draw))
-$(eval $(call BuildPackage,olsrd-mod-bmf))
-$(eval $(call BuildPackage,olsrd-mod-dyn-gw))
-$(eval $(call BuildPackage,olsrd-mod-dyn-gw-plain))
-$(eval $(call BuildPackage,olsrd-mod-httpinfo))
-$(eval $(call BuildPackage,olsrd-mod-nameservice))
-$(eval $(call BuildPackage,olsrd-mod-secure))
-$(eval $(call BuildPackage,olsrd-mod-txtinfo))
-$(eval $(call BuildPackage,olsrd-mod-cl_roam))
+$(eval $(call BuildPackage,olsrd-cl))
+$(eval $(call BuildPackage,olsrd-cl-mod-arprefresh))
+$(eval $(call BuildPackage,olsrd-cl-mod-dot-draw))
+$(eval $(call BuildPackage,olsrd-cl-mod-bmf))
+$(eval $(call BuildPackage,olsrd-cl-mod-dyn-gw))
+$(eval $(call BuildPackage,olsrd-cl-mod-dyn-gw-plain))
+$(eval $(call BuildPackage,olsrd-cl-mod-httpinfo))
+$(eval $(call BuildPackage,olsrd-cl-mod-nameservice))
+$(eval $(call BuildPackage,olsrd-cl-mod-secure))
+$(eval $(call BuildPackage,olsrd-cl-mod-txtinfo))
+$(eval $(call BuildPackage,olsrd-cl-mod-cl_roam))
