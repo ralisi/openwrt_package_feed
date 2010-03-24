@@ -8,7 +8,7 @@
 
 include $(TOPDIR)/rules.mk
 
-PKG_NAME:=olsrd
+PKG_BASENAME:=olsrd
 PKG_NAME:=$(PKG_BASENAME)-cl
 PKG_VERSION:=0.5.6_cr
 PKG_RELEASE:=2
