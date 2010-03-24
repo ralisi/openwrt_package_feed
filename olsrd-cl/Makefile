@@ -9,13 +9,13 @@
 include $(TOPDIR)/rules.mk
 
 PKG_NAME:=olsrd-cl
-PKG_VERSION:=0.5.6_cr
+PKG_VERSION:=0.5.6_a
 PKG_RELEASE:=2
 PKG_REV:=bdebcfe09159b7a75813debf2951dc4c87e1d967
 
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.bz2
-PKG_SOURCE_SUBDIR:=olsrd-$(PKG_VERSION)
+PKG_SOURCE_SUBDIR:=olsrd-cl-$(PKG_VERSION)
 PKG_SOURCE_URL:=git://github.com/ralisi/olsrd_cl_roam.git
 PKG_SOURCE_PROTO:=git
 PKG_SOURCE_VERSION:=$(PKG_REV)
